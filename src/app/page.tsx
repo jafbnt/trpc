@@ -7,6 +7,11 @@ const HomePage = async () => {
 
   const users = await caller.user.list({ limit: 5 })
 
+  const addedPost = await caller.user.create({
+    email: "ti2@celular.net.br",
+    name: "horastor"
+});
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Lista de Usuários</h1>

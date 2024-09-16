@@ -3,6 +3,20 @@ import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
 
 export const userRouter = router({
+  create: publicProcedure.input(
+    z.object({
+      name: z.string().min(3),
+      email: z.string().email()
+    })
+  ).mutation(async(opts) => {
+    const user = await opts.ctx.prisma.user.create({
+      data: {
+        name: opts.input.name,
+        email: opts.input.email
+      }
+         })
+        return user;
+      }),
   list: publicProcedure
     .input(
       z.object({
