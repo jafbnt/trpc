@@ -1,0 +1,4 @@
+FROM postgres:13-alpine
+ENV POSTGRES_USER=usuario
+ENV POSTGRES_PASSWORD=senha
+ENV POSTGRES_DB=meu_banco
